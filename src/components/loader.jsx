@@ -1,0 +1,14 @@
+import React from 'react'
+import LoadingGif from '../images/loading.png';
+
+const Loader = () => {
+  return (
+    <div className='loader'>
+     <div className="loader__image">
+        <img src={LoadingGif} alt="loading img"/>
+     </div>
+    </div>
+  )
+}
+
+export default Loader
