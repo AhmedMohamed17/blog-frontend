@@ -18,7 +18,7 @@ const Dashboard = () => {
     if(!token){
       navigate('/login')
     }
-  },[])
+  },[token, navigate]) // i changed for netlify deploy
    useEffect(()=>{
     const fetchPosts =async()=>{
       setIsLoading(true);
@@ -36,7 +36,7 @@ const Dashboard = () => {
       setIsLoading(false)
     }
     fetchPosts();
-  },[id])
+  },[id, token]) // i changed for netlify deploy +token
 
   if(isLoading){
     return <Loader/>

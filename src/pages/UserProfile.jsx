@@ -21,7 +21,7 @@ const UserProfile = () => {
     if(!token){
       navigate('/login')
     }
-  },[])
+  },[token, navigate])  // i changed for netlify deploy
 
  useEffect(()=>{
   const getUser =async()=>{
@@ -34,7 +34,7 @@ const UserProfile = () => {
     setAvatar(avatar);
   }
   getUser();
- },[])
+ },[currentUser, token]) // i changed for netlify deploy
 
 
   const changeAvatarHandler =async()=>{
@@ -43,7 +43,7 @@ const UserProfile = () => {
       const postData = new FormData();
       postData.set('avatar',avatar);
       const response =await axios.post(`${process.env.REACT_APP_BASE_URL}/users/change-avatar`,postData,
-        {withCredentails:true ,headers:{Authorization:`Bearer ${token}`}})
+        {withCredentials:true ,headers:{Authorization:`Bearer ${token}`}})
         setAvatar(response?.data.avatar)
     }
     catch(err){
@@ -65,14 +65,14 @@ const UserProfile = () => {
      const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/users/edit-user`,
       userData,{withCredentials:true,headers:{Authorization:`Bearer ${token}`}}
      )
-    if(response.status ==200)
+    if(response.status ===200)
       {
         // log user out
         navigate('/logout') 
       }
     }
     catch(err){
-      setError(error.response.data.message)
+      setError(err.response.data.message)
     }
 
   }

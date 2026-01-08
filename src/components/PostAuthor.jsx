@@ -1,5 +1,5 @@
-import React ,{memo, useEffect,useState}from 'react'
-import { Link } from 'react-router-dom'
+import React ,{ useEffect,useState}from 'react'
+import { Link } from 'react-router-dom' 
 import axios from 'axios';
 
 import ReactTimeAgo from 'react-time-ago';
@@ -30,7 +30,7 @@ const PostAuthor = ({createdAt ,authorID}) => {
       }
     }
     getAuthor();
-  },[])
+  },[authorID]) // i changed for netlify deploy
   return (
    <Link to={`/posts/users/${authorID}`} className='post__author'>
    <div className='post__author-avatar'>

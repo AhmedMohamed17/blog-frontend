@@ -25,7 +25,7 @@ const CategoryPosts = () => {
       
         fetchPosts();
        
-      },[])
+      },[category]) // i changed for netlify deploy
      if(isLoading){
       return <Loader/>
      }

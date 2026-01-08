@@ -15,7 +15,7 @@ const DeletePost = ({postId:id}) => {
       if(!token){
         navigate('/login')
       }
-    },[])
+    },[token, navigate]) // i changed for netlify deploy
     
 
 
@@ -25,8 +25,8 @@ const DeletePost = ({postId:id}) => {
         const response = await axios.delete(`${process.env.REACT_APP_BASE_URL}/posts/${id}`,
           {withCredentials:true ,headers:{Authorization:`Bearer ${token}`}})
 
-        if(response.status ==200){
-           if(location.pathname == `/myposts/${currentUser.id}`){
+        if(response.status ===200){
+           if(location.pathname === `/myposts/${currentUser.id}`){
           navigate(0)
            }else {
           navigate('/')

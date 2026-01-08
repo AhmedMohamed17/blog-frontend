@@ -1,4 +1,4 @@
-import React ,{useContext ,useEffect ,useLayoutEffect}from 'react'
+import React ,{useContext ,useEffect }from 'react'
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../Context/usercontext';
 
@@ -11,7 +11,7 @@ const Logout = () => {
   setCurrentUser(null);
  navigate('/login');
 
- })
+ },[setCurrentUser, navigate])
   return(
     <>
     </>

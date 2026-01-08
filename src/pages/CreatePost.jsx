@@ -20,22 +20,7 @@ const CreatePost = () => {
     if(!token){
       navigate("/login")
     }
-  },[])
-
-  const modules = {
-    toolbar:[
-      [{'header':[1,2,false]}],
-      ['bold','italic','underline','strike','blockquote'],
-      [{'list':'ordered'},{'list':'bullet'},{'indent':'-1'},{'indent':'+1'}],
-      ['link','image'],
-      ['clean']
-    ]
-  }
-  const formats=[
-    'header','bold','italic','underline','strike','blockquote',
-    'list','bullet','indent',
-    'link','image'
-  ]
+  },[token, navigate]) // i changed for netlify deploy
   const POST_CATEGORIES = ['Agricluture', 'Business', 'Education', 'Entertainment', 'Art', 'Investment', 'Weather', 'Uncategorized'];
   
     const createPost =async(e)=>{
@@ -48,7 +33,7 @@ const CreatePost = () => {
       try{
        const response =await axios.post(`${process.env.REACT_APP_BASE_URL}/posts`,postData,
         {withCredentials:true , headers:{Authorization:`Bearer ${token}`}})
-          if(response.status == 201){
+          if(response.status === 201){
             return navigate('/')
           }
       }

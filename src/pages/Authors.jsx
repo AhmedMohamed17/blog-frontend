@@ -35,7 +35,7 @@ const Authors = () => {
         {authors.map(({_id:id, name, avatar, posts})=>(
           <Link key={id}  to={`posts/users/${id}`} className='author'>
             <div className='author__avatar'>
-              <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${avatar}`} alt={'Image of ' + `${name}`} />
+              <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${avatar}`} alt={`Image of ${name}`} />
               </div>
               <div className='author__info'>
                 <h4>{name}</h4>

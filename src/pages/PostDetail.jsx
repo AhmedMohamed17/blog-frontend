@@ -28,7 +28,7 @@ const PostDetail = () => {
     setIsLoading(false)
    }
    getPost()
-  },[])
+  },[id]) // i changed for netlify deploy
 
   if(isLoading){
     return <Loader/>
@@ -39,7 +39,7 @@ const PostDetail = () => {
    {post&& <div className='container post-detail__container'>
       <div className="post-detail__header">
         <PostAuthor authorID={post.creator} createdAt={post.createdAt}/>
-        {currentUser?.id ==post?.creator &&   <div className="post-detail__buttons">
+        {currentUser?.id === post?.creator &&   <div className="post-detail__buttons">
           <Link to ={`/posts/${post?._id}/edit`} className='btn sm primary'>Edit</Link>
            <DeletePost postId={id}/>
           {/* <Link to ={"/posts/wewee/delete"} className='btn sm danger'>Delete</Link> */}
